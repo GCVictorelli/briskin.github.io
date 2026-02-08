@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Briskin Dermatologia</title>
+    <title>Briskin Dermatologia | Especialistas em Pele</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-
+    
     <style>
         body { box-sizing: border-box; }
         .font-serif-elegant { font-family: 'Cormorant Garamond', Georgia, serif; }
@@ -25,14 +25,13 @@
         }
         .nav-link:hover::after { width: 100%; }
         
-        /* Ajuste de Visibilidade: As seções agora começam visíveis */
-        section { opacity: 1; transition: opacity 0.8s ease-out; }
-        
+        /* Ajuste de animação: As seções começam visíveis para evitar tela branca */
         .fade-in { animation: fadeIn 0.8s ease-out forwards; }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        .service-card { transition: all 0.4s ease; }
         .service-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.06); }
         .section-divider {
             width: 60px; height: 1px;
@@ -44,106 +43,113 @@
 <body class="h-full font-sans-modern bg-white text-stone-700 overflow-auto">
 
     <nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-stone-100">
-        <div class="max-w-7xl mx-auto px-6 py-4">
-            <div class="flex items-center justify-between">
-                <a href="#hero" class="font-serif-elegant text-2xl tracking-wide text-stone-800">
-                    <span class="gold-accent">B</span>riskin
-                </a>
-                <div class="hidden md:flex items-center gap-8">
-                    <a href="#sobre" class="nav-link text-sm tracking-wider uppercase text-stone-600 hover:text-stone-900">Sobre</a>
-                    <a href="#medicas" class="nav-link text-sm tracking-wider uppercase text-stone-600 hover:text-stone-900">Médicas</a>
-                    <a href="#servicos" class="nav-link text-sm tracking-wider uppercase text-stone-600 hover:text-stone-900">Serviços</a>
-                    <a href="#espaco" class="nav-link text-sm tracking-wider uppercase text-stone-600 hover:text-stone-900">Espaço</a>
-                    <a href="#contato" class="nav-link text-sm tracking-wider uppercase text-stone-600 hover:text-stone-900">Contato</a>
-                </div>
-                <a href="https://wa.me/5519989669889" target="_blank" class="hidden md:inline-flex items-center gap-2 px-5 py-2.5 bg-stone-900 text-white text-xs tracking-wider uppercase hover:bg-stone-800 transition-colors">Agendar</a>
-                <button id="mobileMenuBtn" class="md:hidden p-2">
-                    <svg class="w-6 h-6 text-stone-700" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" /></svg>
-                </button>
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="#hero" class="font-serif-elegant text-2xl tracking-wide text-stone-800">
+                <span class="gold-accent">B</span>riskin
+            </a>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#sobre" class="nav-link text-sm tracking-wider uppercase text-stone-600 hover:text-stone-900">Sobre</a>
+                <a href="#medicas" class="nav-link text-sm tracking-wider uppercase text-stone-600 hover:text-stone-900">Médicas</a>
+                <a href="#servicos" class="nav-link text-sm tracking-wider uppercase text-stone-600 hover:text-stone-900">Serviços</a>
+                <a href="#espaco" class="nav-link text-sm tracking-wider uppercase text-stone-600 hover:text-stone-900">Espaço</a>
+                <a href="#contato" class="nav-link text-sm tracking-wider uppercase text-stone-600 hover:text-stone-900">Contato</a>
             </div>
+            <a href="https://wa.me/5519989669889" target="_blank" class="hidden md:inline-flex px-5 py-2.5 bg-stone-900 text-white text-xs tracking-wider uppercase hover:bg-stone-800 transition-colors">Agendar</a>
+            <button id="mobileMenuBtn" class="md:hidden p-2 text-stone-700">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" /></svg>
+            </button>
         </div>
         <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-stone-100 px-6 py-4 space-y-4">
-            <a href="#sobre" class="block text-sm tracking-wider uppercase text-stone-600">Sobre</a>
-            <a href="#medicas" class="block text-sm tracking-wider uppercase text-stone-600">Médicas</a>
-            <a href="#servicos" class="block text-sm tracking-wider uppercase text-stone-600">Serviços</a>
-            <a href="#espaco" class="block text-sm tracking-wider uppercase text-stone-600">Espaço</a>
-            <a href="#contato" class="block text-sm tracking-wider uppercase text-stone-600">Contato</a>
+            <a href="#sobre" class="block text-sm uppercase text-stone-600">Sobre</a>
+            <a href="#medicas" class="block text-sm uppercase text-stone-600">Médicas</a>
+            <a href="#servicos" class="block text-sm uppercase text-stone-600">Serviços</a>
+            <a href="#contato" class="block text-sm uppercase text-stone-600">Contato</a>
         </div>
     </nav>
 
     <section id="hero" class="hero-gradient min-h-screen flex items-center pt-20">
-        <div class="max-w-7xl mx-auto px-6 py-20 w-full">
-            <div class="grid lg:grid-cols-2 gap-16 items-center">
-                <div class="fade-in">
-                    <p class="text-xs tracking-[0.3em] uppercase gold-accent mb-6">Dermatologia Clínica & Estética</p>
-                    <h1 class="font-serif-elegant text-5xl md:text-6xl lg:text-7xl font-light text-stone-800 leading-tight mb-8">
-                        Briskin<br>Dermatologia
-                    </h1>
-                    <p class="text-lg md:text-xl font-light text-stone-600 leading-relaxed mb-4 max-w-lg">
-                        Cuidado dermatológico personalizado, com excelência e sofisticação.
-                    </p>
-                    <div class="flex flex-col sm:flex-row gap-4 mt-10">
-                        <a href="https://wa.me/5519989669889" target="_blank" class="inline-flex items-center justify-center gap-3 px-8 py-4 bg-stone-900 text-white text-sm tracking-wider uppercase hover:bg-stone-800 transition-all">
-                            Agendar Consulta
-                        </a>
-                        <a href="#contato" class="inline-flex items-center justify-center gap-2 px-8 py-4 border border-stone-300 text-stone-700 text-sm tracking-wider uppercase hover:border-stone-900 transition-all">
-                            Entrar em Contato
-                        </a>
-                    </div>
+        <div class="max-w-7xl mx-auto px-6 py-20 w-full grid lg:grid-cols-2 gap-16 items-center">
+            <div class="fade-in">
+                <p class="text-xs tracking-[0.3em] uppercase gold-accent mb-6 font-semibold">Dermatologia Clínica & Estética</p>
+                <h1 class="font-serif-elegant text-5xl md:text-7xl font-light text-stone-800 leading-tight mb-8">
+                    Briskin<br>Dermatologia
+                </h1>
+                <p class="text-lg md:text-xl font-light text-stone-600 leading-relaxed mb-10 max-w-lg">
+                    Cuidado dermatológico personalizado, com excelência e sofisticação em Indaiatuba.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="https://wa.me/5519989669889" class="inline-flex items-center justify-center px-8 py-4 bg-stone-900 text-white text-sm uppercase tracking-widest hover:bg-stone-800">Agendar Consulta</a>
+                    <a href="#contato" class="inline-flex items-center justify-center px-8 py-4 border border-stone-300 text-stone-700 text-sm uppercase tracking-widest hover:border-stone-900">Contato</a>
                 </div>
-                <div class="relative hidden lg:block">
-                    <div class="aspect-[4/5] bg-stone-200 rounded-sm flex items-center justify-center">
-                        <svg class="w-32 h-32 text-stone-300" viewbox="0 0 100 100" fill="none"><circle cx="50" cy="35" r="20" stroke="currentColor"/><path d="M25 90 Q25 55 50 55 Q75 55 75 90" stroke="currentColor"/></svg>
-                    </div>
+            </div>
+            <div class="relative hidden lg:block">
+                <div class="aspect-[4/5] bg-stone-200 rounded-sm flex items-center justify-center overflow-hidden">
+                    <svg class="w-32 h-32 text-stone-300" viewbox="0 0 100 100" fill="none"><circle cx="50" cy="35" r="20" stroke="currentColor"/><path d="M25 90 Q25 55 50 55 Q75 55 75 90" stroke="currentColor"/></svg>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="sobre" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-12">
-                <p class="text-xs tracking-[0.3em] uppercase gold-accent mb-4">Nossa História</p>
-                <h2 class="font-serif-elegant text-4xl font-light text-stone-800 mb-6">Quem Somos</h2>
-                <div class="section-divider mx-auto"></div>
-            </div>
-            <p class="text-center text-stone-600 max-w-3xl mx-auto leading-relaxed">
-                A Briskin Dermatologia é uma clínica especializada em cuidados com a pele, unindo ciência, estética e bem-estar. Nosso foco é oferecer tratamentos personalizados, seguros e baseados em evidência científica.
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <p class="text-xs tracking-[0.3em] uppercase gold-accent mb-4">Nossa Essência</p>
+            <h2 class="font-serif-elegant text-4xl font-light text-stone-800 mb-8">Quem Somos</h2>
+            <div class="section-divider mx-auto mb-8"></div>
+            <p class="text-base text-stone-600 leading-relaxed max-w-3xl mx-auto">
+                A Briskin Dermatologia une ciência e bem-estar para oferecer tratamentos seguros e baseados em evidência científica, respeitando a individualidade de cada pele.
             </p>
         </div>
     </section>
 
-    <section id="contato" class="py-20 bg-stone-900 text-white text-center">
-        <h2 class="font-serif-elegant text-3xl mb-8">Fale Conosco</h2>
-        <div class="flex flex-wrap justify-center gap-6">
-            <a href="https://wa.me/5519989669889" class="px-8 py-4 bg-white text-stone-900 uppercase text-xs tracking-widest hover:bg-stone-100">WhatsApp</a>
-            <a href="https://instagram.com/briskin.dermatologia" class="px-8 py-4 border border-white/30 text-white uppercase text-xs tracking-widest hover:bg-white/10">Instagram</a>
+    <section id="servicos" class="py-24 bg-stone-50">
+        <div class="max-w-7xl mx-auto px-6 text-center mb-16">
+            <h2 class="font-serif-elegant text-4xl font-light text-stone-800">Tratamentos</h2>
+            <div class="section-divider mx-auto mt-6"></div>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="service-card p-8 bg-white rounded-sm text-center border border-stone-100">
+                <h3 class="font-serif-elegant text-xl mb-2">Dermatologia Clínica</h3>
+                <p class="text-sm text-stone-500">Diagnóstico completo de doenças da pele.</p>
+            </div>
+            <div class="service-card p-8 bg-white rounded-sm text-center border border-stone-100">
+                <h3 class="font-serif-elegant text-xl mb-2">Estética Avançada</h3>
+                <p class="text-sm text-stone-500">Procedimentos para realçar sua beleza natural.</p>
+            </div>
+            <div class="service-card p-8 bg-white rounded-sm text-center border border-stone-100">
+                <h3 class="font-serif-elegant text-xl mb-2">Rejuvenescimento</h3>
+                <p class="text-sm text-stone-500">Tecnologias modernas anti-idade.</p>
+            </div>
+            <div class="service-card p-8 bg-white rounded-sm text-center border border-stone-100">
+                <h3 class="font-serif-elegant text-xl mb-2">Injetáveis</h3>
+                <p class="text-sm text-stone-500">Toxina botulínica e preenchimentos seguros.</p>
+            </div>
         </div>
     </section>
 
-    <footer class="py-10 bg-stone-900 text-stone-500 text-center border-t border-white/5">
-        <p class="text-sm">© 2026 Briskin Dermatologia. Todos os direitos reservados.</p>
+    <footer class="py-12 bg-stone-900 text-white text-center">
+        <p class="font-serif-elegant text-2xl mb-4"><span class="gold-accent">B</span>riskin Dermatologia</p>
+        <p class="text-sm text-stone-500">© 2026 Briskin Dermatologia. Todos os direitos reservados.</p>
     </footer>
 
     <script>
-        // Menu Mobile Simples
+        // Menu Mobile Toggle
         const btn = document.getElementById('mobileMenuBtn');
         const menu = document.getElementById('mobileMenu');
         if (btn && menu) {
             btn.addEventListener('click', () => menu.classList.toggle('hidden'));
         }
 
-        // Smooth Scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                    if (menu) menu.classList.add('hidden');
+        // Observer para animações de fade-in no scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                    observer.unobserve(entry.target);
                 }
             });
-        });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('section').forEach(section => observer.observe(section));
     </script>
 </body>
 </html>
