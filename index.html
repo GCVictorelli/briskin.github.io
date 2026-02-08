@@ -1,207 +1,149 @@
-<!DOCTYPE html>
-<html lang="pt-BR" class="h-full scroll-smooth">
+<!doctype html>
+<html lang="pt-BR" class="h-full">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Briskin Dermatologia | Excelência e Sofisticação</title>
+    <title>Briskin Dermatologia</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
+
     <style>
-        :root {
-            --gold-accent: #b8a068;
-            --stone-900: #1c1917;
-        }
+        body { box-sizing: border-box; }
         .font-serif-elegant { font-family: 'Cormorant Garamond', Georgia, serif; }
         .font-sans-modern { font-family: 'Montserrat', sans-serif; }
+        html { scroll-behavior: smooth; }
+        .hero-gradient { background: linear-gradient(135deg, #faf9f7 0%, #f5f3f0 50%, #ebe8e4 100%); }
+        .gold-accent { color: #b8a068; }
+        .nav-link { position: relative; }
+        .nav-link::after {
+            content: ''; position: absolute; bottom: -2px; left: 0;
+            width: 0; height: 1px; background: #b8a068; transition: width 0.3s ease;
+        }
+        .nav-link:hover::after { width: 100%; }
         
-        .hero-gradient {
-            background: linear-gradient(135deg, #faf9f7 0%, #f5f3f0 50%, #ebe8e4 100%);
-        }
-        .gold-accent { color: var(--gold-accent); }
+        /* Ajuste de Visibilidade: As seções agora começam visíveis */
+        section { opacity: 1; transition: opacity 0.8s ease-out; }
         
-        /* Apple-style Reveal Animations */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px) scale(0.98);
-            transition: all 1.2s cubic-bezier(0.21, 0.6, 0.35, 1);
+        .fade-in { animation: fadeIn 0.8s ease-out forwards; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0) scale(1);
+        .service-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.06); }
+        .section-divider {
+            width: 60px; height: 1px;
+            background: linear-gradient(90deg, transparent, #b8a068, transparent);
         }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-thumb { background: #d1d1d1; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: #b8a068; }
     </style>
-
-    <script type="importmap">
-    {
-      "imports": {
-        "react": "https://esm.sh/react@18.2.0",
-        "react-dom/client": "https://esm.sh/react-dom@18.2.0/client",
-        "lucide-react": "https://esm.sh/lucide-react@0.263.1"
-      }
-    }
-    </script>
 </head>
-<body class="h-full font-sans-modern bg-white text-stone-700">
-    <div id="root"></div>
 
-    <script type="module">
-        import React, { useState, useEffect, useRef } from 'react';
-        import { createRoot } from 'react-dom/client';
-        import { 
-            Menu, X, MessageSquare, ClipboardList, Sparkles, Droplets, 
-            Sun, Smile, Syringe, Zap, UserRound, MapPin, 
-            Instagram, MessageCircle, Send, Loader2, User, ShieldCheck, Home, Lightbulb 
-        } from 'lucide-react';
+<body class="h-full font-sans-modern bg-white text-stone-700 overflow-auto">
 
-        // --- IMAGENS REAIS (Unsplash) ---
-        const IMAGES = {
-            HERO: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=2070',
-            CLINIC: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=2053',
-            DOCTOR_1: 'https://images.unsplash.com/photo-1559839734-2b71f1e3c77c?auto=format&fit=crop&q=80&w=800',
-            DOCTOR_2: 'https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&q=80&w=800',
-        };
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-stone-100">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="#hero" class="font-serif-elegant text-2xl tracking-wide text-stone-800">
+                    <span class="gold-accent">B</span>riskin
+                </a>
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#sobre" class="nav-link text-sm tracking-wider uppercase text-stone-600 hover:text-stone-900">Sobre</a>
+                    <a href="#medicas" class="nav-link text-sm tracking-wider uppercase text-stone-600 hover:text-stone-900">Médicas</a>
+                    <a href="#servicos" class="nav-link text-sm tracking-wider uppercase text-stone-600 hover:text-stone-900">Serviços</a>
+                    <a href="#espaco" class="nav-link text-sm tracking-wider uppercase text-stone-600 hover:text-stone-900">Espaço</a>
+                    <a href="#contato" class="nav-link text-sm tracking-wider uppercase text-stone-600 hover:text-stone-900">Contato</a>
+                </div>
+                <a href="https://wa.me/5519989669889" target="_blank" class="hidden md:inline-flex items-center gap-2 px-5 py-2.5 bg-stone-900 text-white text-xs tracking-wider uppercase hover:bg-stone-800 transition-colors">Agendar</a>
+                <button id="mobileMenuBtn" class="md:hidden p-2">
+                    <svg class="w-6 h-6 text-stone-700" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" /></svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-stone-100 px-6 py-4 space-y-4">
+            <a href="#sobre" class="block text-sm tracking-wider uppercase text-stone-600">Sobre</a>
+            <a href="#medicas" class="block text-sm tracking-wider uppercase text-stone-600">Médicas</a>
+            <a href="#servicos" class="block text-sm tracking-wider uppercase text-stone-600">Serviços</a>
+            <a href="#espaco" class="block text-sm tracking-wider uppercase text-stone-600">Espaço</a>
+            <a href="#contato" class="block text-sm tracking-wider uppercase text-stone-600">Contato</a>
+        </div>
+    </nav>
 
-        const SERVICES = [
-            { id: '1', title: 'Dermatologia Clínica', icon: ClipboardList },
-            { id: '2', title: 'Dermatologia Estética', icon: Sparkles },
-            { id: '3', title: 'Tratamento de Acne', icon: Droplets },
-            { id: '4', title: 'Manchas e Melasma', icon: Sun },
-            { id: '5', title: 'Rejuvenescimento', icon: Smile },
-            { id: '6', title: 'Injetáveis', icon: Syringe },
-            { id: '7', title: 'Laser', icon: Zap },
-            { id: '8', title: 'Avaliação', icon: UserRound }
-        ];
+    <section id="hero" class="hero-gradient min-h-screen flex items-center pt-20">
+        <div class="max-w-7xl mx-auto px-6 py-20 w-full">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="fade-in">
+                    <p class="text-xs tracking-[0.3em] uppercase gold-accent mb-6">Dermatologia Clínica & Estética</p>
+                    <h1 class="font-serif-elegant text-5xl md:text-6xl lg:text-7xl font-light text-stone-800 leading-tight mb-8">
+                        Briskin<br>Dermatologia
+                    </h1>
+                    <p class="text-lg md:text-xl font-light text-stone-600 leading-relaxed mb-4 max-w-lg">
+                        Cuidado dermatológico personalizado, com excelência e sofisticação.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 mt-10">
+                        <a href="https://wa.me/5519989669889" target="_blank" class="inline-flex items-center justify-center gap-3 px-8 py-4 bg-stone-900 text-white text-sm tracking-wider uppercase hover:bg-stone-800 transition-all">
+                            Agendar Consulta
+                        </a>
+                        <a href="#contato" class="inline-flex items-center justify-center gap-2 px-8 py-4 border border-stone-300 text-stone-700 text-sm tracking-wider uppercase hover:border-stone-900 transition-all">
+                            Entrar em Contato
+                        </a>
+                    </div>
+                </div>
+                <div class="relative hidden lg:block">
+                    <div class="aspect-[4/5] bg-stone-200 rounded-sm flex items-center justify-center">
+                        <svg class="w-32 h-32 text-stone-300" viewbox="0 0 100 100" fill="none"><circle cx="50" cy="35" r="20" stroke="currentColor"/><path d="M25 90 Q25 55 50 55 Q75 55 75 90" stroke="currentColor"/></svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        // --- COMPONENTES ---
+    <section id="sobre" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <p class="text-xs tracking-[0.3em] uppercase gold-accent mb-4">Nossa História</p>
+                <h2 class="font-serif-elegant text-4xl font-light text-stone-800 mb-6">Quem Somos</h2>
+                <div class="section-divider mx-auto"></div>
+            </div>
+            <p class="text-center text-stone-600 max-w-3xl mx-auto leading-relaxed">
+                A Briskin Dermatologia é uma clínica especializada em cuidados com a pele, unindo ciência, estética e bem-estar. Nosso foco é oferecer tratamentos personalizados, seguros e baseados em evidência científica.
+            </p>
+        </div>
+    </section>
 
-        const Reveal = ({ children, delay = 0 }) => {
-            const [isVisible, setIsVisible] = useState(false);
-            const ref = useRef(null);
-            useEffect(() => {
-                const observer = new IntersectionObserver(([entry]) => {
-                    if (entry.isIntersecting) {
-                        setTimeout(() => setIsVisible(true), delay);
-                        observer.unobserve(entry.target);
-                    }
-                }, { threshold: 0.1 });
-                if (ref.current) observer.observe(ref.current);
-                return () => observer.disconnect();
-            }, [delay]);
-            return React.createElement('div', { ref, className: `reveal ${isVisible ? 'active' : ''}` }, children);
-        };
+    <section id="contato" class="py-20 bg-stone-900 text-white text-center">
+        <h2 class="font-serif-elegant text-3xl mb-8">Fale Conosco</h2>
+        <div class="flex flex-wrap justify-center gap-6">
+            <a href="https://wa.me/5519989669889" class="px-8 py-4 bg-white text-stone-900 uppercase text-xs tracking-widest hover:bg-stone-100">WhatsApp</a>
+            <a href="https://instagram.com/briskin.dermatologia" class="px-8 py-4 border border-white/30 text-white uppercase text-xs tracking-widest hover:bg-white/10">Instagram</a>
+        </div>
+    </section>
 
-        const Navbar = ({ isScrolled }) => {
-            const [isOpen, setIsOpen] = useState(false);
-            const links = ['Sobre', 'Médicas', 'Serviços', 'Contato'];
-            return React.createElement('nav', { 
-                className: `fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-6'}` 
-            },
-                React.createElement('div', { className: 'max-w-7xl mx-auto px-6 flex justify-between items-center' },
-                    React.createElement('a', { href: '#', className: 'font-serif-elegant text-2xl text-stone-800' }, 
-                        React.createElement('span', { className: 'gold-accent' }, 'B'), 'riskin'
-                    ),
-                    React.createElement('div', { className: 'hidden md:flex gap-8' },
-                        links.map(l => React.createElement('a', { key: l, href: `#${l.toLowerCase()}`, className: 'text-xs uppercase tracking-widest hover:text-[#b8a068] transition-colors' }, l))
-                    ),
-                    React.createElement('button', { onClick: () => setIsOpen(!isOpen), className: 'md:hidden' }, isOpen ? React.createElement(X) : React.createElement(Menu))
-                )
-            );
-        };
+    <footer class="py-10 bg-stone-900 text-stone-500 text-center border-t border-white/5">
+        <p class="text-sm">© 2026 Briskin Dermatologia. Todos os direitos reservados.</p>
+    </footer>
 
-        const Hero = () => React.createElement('section', { className: 'hero-gradient min-h-screen flex items-center pt-20' },
-            React.createElement('div', { className: 'max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center' },
-                React.createElement('div', { className: 'space-y-8' },
-                    React.createElement('p', { className: 'text-xs tracking-[0.4em] uppercase gold-accent font-bold' }, 'Dermatologia de Alto Padrão'),
-                    React.createElement('h1', { className: 'font-serif-elegant text-6xl md:text-8xl font-light text-stone-800 leading-tight' }, 'Briskin', React.createElement('br'), 'Dermatologia'),
-                    React.createElement('p', { className: 'text-lg text-stone-600 max-w-md' }, 'Ciência e estética unidas para realçar sua beleza natural com sofisticação.'),
-                    React.createElement('div', { className: 'flex gap-4' },
-                        React.createElement('a', { href: 'https://wa.me/5519989669889', className: 'px-8 py-4 bg-stone-900 text-white text-xs uppercase tracking-widest hover:bg-black transition-all shadow-lg' }, 'Agendar Consulta')
-                    )
-                ),
-                React.createElement('div', { className: 'relative' },
-                    React.createElement('div', { className: 'aspect-[4/5] rounded-sm overflow-hidden shadow-2xl' },
-                        React.createElement('img', { src: IMAGES.HERO, className: 'w-full h-full object-cover' })
-                    )
-                )
-            )
-        );
+    <script>
+        // Menu Mobile Simples
+        const btn = document.getElementById('mobileMenuBtn');
+        const menu = document.getElementById('mobileMenu');
+        if (btn && menu) {
+            btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+        }
 
-        const Services = () => React.createElement('section', { id: 'servicos', className: 'py-32 bg-white' },
-            React.createElement('div', { className: 'max-w-7xl mx-auto px-6' },
-                React.createElement('h2', { className: 'font-serif-elegant text-4xl text-center mb-20' }, 'Tratamentos Exclusivos'),
-                React.createElement('div', { className: 'grid grid-cols-2 md:grid-cols-4 gap-8' },
-                    SERVICES.map((s, i) => React.createElement(Reveal, { key: s.id, delay: i * 100 },
-                        React.createElement('div', { className: 'p-10 bg-stone-50 text-center hover:shadow-xl transition-all border border-stone-100' },
-                            React.createElement(s.icon, { className: 'w-8 h-8 mx-auto mb-6 gold-accent' }),
-                            React.createElement('h3', { className: 'font-serif-elegant text-lg uppercase tracking-wider' }, s.title)
-                        )
-                    ))
-                )
-            )
-        );
-
-        const ChatAssistant = () => {
-            const [isOpen, setIsOpen] = useState(false);
-            const [messages, setMessages] = useState([{ role: 'bot', text: 'Bem-vinda à Briskin. Como posso ajudar em seu cuidado hoje?' }]);
-            const [loading, setLoading] = useState(false);
-
-            const handleMsg = (txt) => {
-                setMessages(prev => [...prev, { role: 'user', text: txt }]);
-                setLoading(true);
-                setTimeout(() => {
-                    setMessages(prev => [...prev, { role: 'bot', text: 'Nossa equipe terá prazer em atendê-la. Gostaria de agendar uma avaliação via WhatsApp (19) 98966-9889?' }]);
-                    setLoading(false);
-                }, 1000);
-            };
-
-            return React.createElement('div', { className: 'fixed bottom-8 right-8 z-[100]' },
-                React.createElement('button', { onClick: () => setIsOpen(!isOpen), className: 'w-16 h-16 bg-stone-900 text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-transform' }, isOpen ? React.createElement(X) : React.createElement(MessageSquare)),
-                isOpen && React.createElement('div', { className: 'absolute bottom-20 right-0 w-80 bg-white rounded-2xl shadow-2xl overflow-hidden border border-stone-100 flex flex-col' },
-                    React.createElement('div', { className: 'bg-stone-900 p-4 text-white font-serif-elegant' }, 'Assistente Briskin'),
-                    React.createElement('div', { className: 'h-64 p-4 overflow-y-auto space-y-4 bg-stone-50' },
-                        messages.map((m, i) => React.createElement('div', { key: i, className: `text-sm p-3 rounded-lg ${m.role === 'user' ? 'bg-stone-800 text-white ml-8' : 'bg-white border mr-8'}` }, m.text))
-                    ),
-                    React.createElement('div', { className: 'p-3 flex gap-2 border-t' },
-                        React.createElement('input', { 
-                            onKeyPress: (e) => e.key === 'Enter' && (handleMsg(e.target.value), e.target.value = ''),
-                            placeholder: 'Perguntar...', className: 'flex-1 text-xs outline-none' 
-                        })
-                    )
-                )
-            );
-        };
-
-        const App = () => {
-            const [scrolled, setScrolled] = useState(false);
-            useEffect(() => {
-                const h = () => setScrolled(window.scrollY > 50);
-                window.addEventListener('scroll', h);
-                return () => window.removeEventListener('scroll', h);
-            }, []);
-
-            return React.createElement('div', null,
-                React.createElement(Navbar, { isScrolled: scrolled }),
-                React.createElement(Hero),
-                React.createElement(Services),
-                React.createElement(ChatAssistant),
-                React.createElement('footer', { className: 'py-20 bg-stone-900 text-stone-500 text-center text-xs tracking-widest' },
-                    '© 2026 BRISKIN DERMATOLOGIA | INDAIATUBA-SP'
-                )
-            );
-        };
-
-        const root = createRoot(document.getElementById('root'));
-        root.render(React.createElement(App));
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                    if (menu) menu.classList.add('hidden');
+                }
+            });
+        });
     </script>
 </body>
 </html>
