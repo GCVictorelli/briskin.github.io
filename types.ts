@@ -12,7 +12,7 @@ export interface Doctor {
   id: string;
   name: string;
   role: string;
-  description: string;
+  description: string[];
   image: string;
 }
 

@@ -62,12 +62,6 @@ export const SERVICES: Service[] = [
     icon: <Syringe className="w-7 h-7" />
   },
   {
-    id: '7',
-    title: 'Laser',
-    description: 'Tecnologias dermatológicas avançadas',
-    icon: <Zap className="w-7 h-7" />
-  },
-  {
     id: '8',
     title: 'Avaliação',
     description: 'Análise dermatológica personalizada',
@@ -78,16 +72,32 @@ export const SERVICES: Service[] = [
 export const DOCTORS: Doctor[] = [
   {
     id: 'danielle',
-    name: 'Dra. Daniele Briski Felzke',
+    name: 'Dra. Daniele',
     role: 'Médica Dermatologista',
-    description: 'Atendimento humanizado e focado em resultados naturais. Especialista em procedimentos estéticos e cuidados com a pele.',
+    description: [
+      'Formação:',
+      'Dra Daniele Briski Felzke',
+      'CRM/SP: 176.282',
+      'RQE: 129.813',
+      'Médica formada pela Universidade de Marília - Unimar',
+      'Especialista em dermatologia pelo Núcleo de Ensino Superior em Ciências Humanas e da Saúde.',
+      'Título de Especialista pela Sociedade Brasileira de Dermatologia.'
+    ],
     image: IMAGES.HALLWAY_TEAM
   },
   {
     id: 'denise',
-    name: 'Dra. Denise Briski Leite',
+    name: 'Dra. Denise',
     role: 'Médica Dermatologista',
-    description: 'Especialista em dermatologia clínica e estética. Dedicada a proporcionar os melhores resultados para cada paciente.',
+    description: [
+      'Formação:',
+      'Dra Denise Briski Leite',
+      'CRM/SP: 176.289',
+      'RQE: 129.814',
+      'Médica formada pela Universidade de Marília - Unimar',
+      'Especialista em dermatologia pelo Núcleo de Ensino Superior em Ciências Humanas e da Saúde.',
+      'Título de Especialista pela Sociedade Brasileira de Dermatologia.'
+    ],
     image: IMAGES.RECEPTION_TEAM
   }
 ];
