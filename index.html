@@ -114,6 +114,7 @@
             BUILDING_FACADE: './img/frente_predio.jpg',
             HALLWAY_TEAM: './img/perfil_daniele.jpg',
             LOGO_CLOSEUP: './img/consultorio_clinica.jpg',
+            INTERIOR_BED: './img/consultorio_maca_clinica.jpg',
         };
 
         const SERVICES = [
@@ -293,12 +294,10 @@
 
         const Gallery = () => {
             const images = [
-                { url: IMAGES.LOGO_WALL_TEAM, alt: 'Equipe Briskin com Logo' },
-                { url: IMAGES.RECEPTION_TEAM, alt: 'Dra. Daniele e Dra. Denise na Recepção' },
                 { url: IMAGES.BUILDING_FACADE, alt: 'Fachada Torre Medical Indaiatuba' },
                 { url: IMAGES.INTERIOR_PINK, alt: 'Interior da Clínica Consultório' },
                 { url: IMAGES.LOGO_CLOSEUP, alt: 'Logotipo Briskin Dermatologia' },
-                { url: IMAGES.HALLWAY_TEAM, alt: 'Médicas no Corredor da Clínica' },
+                { url: IMAGES.INTERIOR_BED, alt: 'Maca interior consultorio' },
             ];
             return React.createElement('section', { id: 'espaco', className: 'py-24 md:py-32 bg-[#f7e8ea]' },
                 React.createElement('div', { className: 'max-w-7xl mx-auto px-6' },
