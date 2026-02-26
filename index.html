@@ -102,35 +102,67 @@
         import { 
             Menu, X, MessageSquare, ClipboardList, Sparkles, Droplets, 
             Sun, Smile, Syringe, Zap, UserRound, Heart, Star, MapPin, 
-            Instagram, MessageCircle, Send, User, ShieldCheck, Home, Lightbulb, ChevronRight, Phone
+            Instagram, MessageCircle, Send, User, ShieldCheck, Home, Lightbulb, ChevronRight, Phone,
+            Loader2
         } from 'lucide-react';
 
-        // --- CONFIGURAÇÕES ---
-        const CLINIC_INFO = {
-            name: "Briskin Dermatologia",
-            whatsapp: "5519989669889",
-            whatsapp_formatted: "(19) 98966-9889",
-            instagram_handle: "briskin.dermatologia",
-            instagram_url: "https://www.instagram.com/briskin.dermatologia",
-            address: "Rua das Orquídeas, 667, Sala 808 - Indaiatuba/SP"
-        };
-
+        // --- ASSETS & CONFIGURAÇÕES ---
         const IMAGES = {
-            LOGO_WALL: 'https://lh3.googleusercontent.com/p/AF1QipN6fJgY0S_M5z1o9JqS_Yv-N7-S_zVfP_K-l-G-=s1360',
-            INTERIOR: 'https://lh3.googleusercontent.com/p/AF1QipM-pX_Y-S_m5z1o9JqS_Yv-N7-S_zVfP_K-l-G-=s1360',
-            RECEPTION: 'https://lh3.googleusercontent.com/p/AF1QipP_L-gZ0S_M5z1o9JqS_Yv-N7-S_zVfP_K-l-G-=s1360',
-            HALLWAY: 'https://lh3.googleusercontent.com/p/AF1QipQ_R-hZ0S_M5z1o9JqS_Yv-N7-S_zVfP_K-l-G-=s1360',
+            LOGO_WALL_TEAM: 'https://lh3.googleusercontent.com/p/AF1QipN6fJgY0S_M5z1o9JqS_Yv-N7-S_zVfP_K-l-G-=s1360-w1360-h1020',
+            INTERIOR_PINK: 'https://lh3.googleusercontent.com/p/AF1QipM-pX_Y-S_m5z1o9JqS_Yv-N7-S_zVfP_K-l-G-=s1360-w1360-h1020',
+            RECEPTION_TEAM: 'https://lh3.googleusercontent.com/p/AF1QipP_L-gZ0S_M5z1o9JqS_Yv-N7-S_zVfP_K-l-G-=s1360-w1360-h1020',
+            BUILDING_FACADE: 'https://lh3.googleusercontent.com/p/AF1QipO-j_mZ0S_M5z1o9JqS_Yv-N7-S_zVfP_K-l-G-=s1360-w1360-h1020',
+            HALLWAY_TEAM: 'https://lh3.googleusercontent.com/p/AF1QipQ_R-hZ0S_M5z1o9JqS_Yv-N7-S_zVfP_K-l-G-=s1360-w1360-h1020',
+            LOGO_CLOSEUP: 'https://lh3.googleusercontent.com/p/AF1QipT_K-lZ0S_M5z1o9JqS_Yv-N7-S_zVfP_K-l-G-=s1360-w1360-h1020',
         };
 
         const SERVICES = [
-            { id: 1, title: 'Dermatologia Clínica', desc: 'Saúde da pele, cabelos e unhas', icon: ClipboardList },
-            { id: 2, title: 'Estética Avançada', desc: 'Realçando sua beleza natural', icon: Sparkles },
-            { id: 3, title: 'Tratamento de Acne', desc: 'Protocolos de controle eficaz', icon: Droplets },
-            { id: 4, title: 'Melasma e Manchas', desc: 'Clareamento e uniformização', icon: Sun },
-            { id: 5, title: 'Gerenciamento de Idade', desc: 'Tecnologias de rejuvenescimento', icon: Smile },
-            { id: 6, title: 'Procedimentos Injetáveis', desc: 'Toxina botulínica e preenchedores', icon: Syringe },
-            { id: 7, title: 'Tecnologia Laser', desc: 'Soluções de alta performance', icon: Zap },
-            { id: 8, title: 'Bioestimuladores', desc: 'Recuperação do colágeno', icon: UserRound }
+            { id: '1', title: 'Dermatologia Clínica', description: 'Diagnóstico e tratamento de doenças da pele', icon: React.createElement(ClipboardList, { className: "w-7 h-7" }) },
+            { id: '2', title: 'Dermatologia Estética', description: 'Procedimentos para realçar sua beleza natural', icon: React.createElement(Sparkles, { className: "w-7 h-7" }) },
+            { id: '3', title: 'Tratamento de Acne', description: 'Protocolos personalizados para pele livre de acne', icon: React.createElement(Droplets, { className: "w-7 h-7" }) },
+            { id: '4', title: 'Manchas e Melasma', description: 'Uniformização e clareamento da pele', icon: React.createElement(Sun, { className: "w-7 h-7" }) },
+            { id: '5', title: 'Rejuvenescimento', description: 'Tratamentos anti-idade avançados', icon: React.createElement(Smile, { className: "w-7 h-7" }) },
+            { id: '6', title: 'Injetáveis', description: 'Toxina botulínica e preenchimentos', icon: React.createElement(Syringe, { className: "w-7 h-7" }) },
+            { id: '8', title: 'Avaliação', description: 'Análise dermatológica personalizada', icon: React.createElement(UserRound, { className: "w-7 h-7" }) }
+        ];
+
+        const DOCTORS = [
+            {
+                id: 'danielle',
+                name: 'Dra. Daniele',
+                role: 'Médica Dermatologista',
+                description: [
+                    'Formação:',
+                    'Dra Daniele Briski Felzke',
+                    'CRM/SP: 176.282',
+                    'RQE: 129.813',
+                    'Médica formada pela Universidade de Marília - Unimar',
+                    'Especialista em dermatologia pelo Núcleo de Ensino Superior em Ciências Humanas e da Saúde.',
+                    'Título de Especialista pela Sociedade Brasileira de Dermatologia.'
+                ],
+                image: IMAGES.HALLWAY_TEAM
+            },
+            {
+                id: 'denise',
+                name: 'Dra. Denise',
+                role: 'Médica Dermatologista',
+                description: [
+                    'Formação:',
+                    'Dra Denise Briski Leite',
+                    'CRM/SP: 176.289',
+                    'RQE: 129.814',
+                    'Médica formada pela Universidade de Marília - Unimar',
+                    'Especialista em dermatologia pelo Núcleo de Ensino Superior em Ciências Humanas e da Saúde.',
+                    'Título de Especialista pela Sociedade Brasileira de Dermatologia.'
+                ],
+                image: IMAGES.RECEPTION_TEAM
+            }
+        ];
+
+        const TESTIMONIALS = [
+            { id: '1', name: 'Maria C.', text: 'Atendimento impecável, ambiente acolhedor e resultados excelentes. Me senti muito bem cuidada.', rating: 5 },
+            { id: '2', name: 'Ana P.', text: 'Profissionais extremamente qualificadas e atenciosas. O tratamento superou minhas expectativas.', rating: 5 },
+            { id: '3', name: 'Fernanda S.', text: 'Clínica maravilhosa! Espaço lindo e moderno, com atendimento humanizado. Super recomendo.', rating: 5 }
         ];
 
         // --- COMPONENTES ---
@@ -146,272 +178,273 @@
                     }
                 }, { threshold: 0.1 });
                 if (ref.current) observer.observe(ref.current);
-                return () => observer.disconnect();
+                return () => { if (ref.current) observer.unobserve(ref.current); };
             }, [delay]);
             return React.createElement('div', { ref, className: `reveal ${isVisible ? 'active' : ''} ${className}` }, children);
         };
 
-        const Navbar = () => {
-            const [scrolled, setScrolled] = useState(false);
-            const [menuOpen, setMenuOpen] = useState(false);
-            useEffect(() => {
-                const h = () => setScrolled(window.scrollY > 40);
-                window.addEventListener('scroll', h);
-                return () => window.removeEventListener('scroll', h);
-            }, []);
-
-            const navItems = [
-                { name: 'Início', id: 'hero' },
-                { name: 'A Clínica', id: 'sobre' },
-                { name: 'Médicas', id: 'medicas' },
-                { name: 'Tratamentos', id: 'servicos' },
-                { name: 'Contato', id: 'contato' }
+        const Navbar = ({ isScrolled }) => {
+            const [isOpen, setIsOpen] = useState(false);
+            const navLinks = [
+                { name: 'Sobre', href: 'sobre' },
+                { name: 'Médicas', href: 'medicas' },
+                { name: 'Serviços', href: 'servicos' },
+                { name: 'Espaço', href: 'espaco' },
+                { name: 'Contato', href: 'contato' },
             ];
-
-            const scrollTo = (id) => {
-                const el = document.getElementById(id);
-                if (el) window.scrollTo({ top: el.offsetTop - 80, behavior: 'smooth' });
-                setMenuOpen(false);
+            const handleNavClick = (e, targetId) => {
+                e.preventDefault();
+                const element = document.getElementById(targetId);
+                if (element) {
+                    const offset = 80;
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - offset;
+                    window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                }
+                setIsOpen(false);
             };
-
-            return React.createElement('nav', { 
-                className: `fixed top-0 w-full z-50 transition-all duration-700 ${scrolled ? 'bg-white/90 backdrop-blur-xl py-4 shadow-[0_1px_20px_rgba(0,0,0,0.03)]' : 'bg-transparent py-10'}` 
-            },
-                React.createElement('div', { className: 'max-w-7xl mx-auto px-8 flex justify-between items-center' },
-                    React.createElement('button', { onClick: () => scrollTo('hero'), className: 'font-serif-elegant text-3xl font-semibold tracking-tight group transition-all' }, 
-                        React.createElement('span', { className: 'gold-accent' }, 'B'), 'riskin'
-                    ),
-                    React.createElement('div', { className: 'hidden md:flex gap-12' },
-                        navItems.map(item => React.createElement('button', { 
-                            key: item.id, 
-                            onClick: () => scrollTo(item.id),
-                            className: 'text-[11px] uppercase tracking-[0.25em] font-bold text-stone-500 hover:text-stone-900 transition-all relative group' 
-                        }, 
-                            item.name,
-                            React.createElement('span', { className: 'absolute -bottom-1 left-0 w-0 h-[1.5px] bg-gold transition-all duration-500 group-hover:w-full' })
-                        ))
-                    ),
-                    React.createElement('div', { className: 'hidden md:flex items-center gap-6' },
-                         React.createElement('a', { href: CLINIC_INFO.instagram_url, target: "_blank", className: 'text-stone-500 hover:text-stone-900 transition-colors' }, React.createElement(Instagram, {size: 18})),
-                         React.createElement('a', { 
-                            href: `https://wa.me/${CLINIC_INFO.whatsapp}`,
-                            className: 'px-8 py-3 bg-stone-900 text-white text-[11px] font-bold uppercase tracking-widest hover:bg-stone-800 hover:shadow-lg transition-all transform active:scale-95'
-                        }, 'Agendar')
-                    ),
-                    React.createElement('button', { className: 'md:hidden p-2', onClick: () => setMenuOpen(!menuOpen) }, menuOpen ? React.createElement(X) : React.createElement(Menu))
+            return React.createElement('nav', { className: `fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-[#fdf4f5]/95 backdrop-blur-sm border-b border-[#f0dcdf] py-4' : 'bg-transparent py-6'}` },
+                React.createElement('div', { className: 'max-w-7xl mx-auto px-6 flex items-center justify-between' },
+                    React.createElement('a', { href: "#hero", onClick: (e) => handleNavClick(e, 'hero'), className: "font-serif-elegant text-2xl tracking-wide text-stone-800" }, React.createElement('span', { className: 'text-[#b8a068]' }, 'BriSkin')),
+                    React.createElement('div', { className: 'hidden md:flex items-center gap-8' }, navLinks.map(link => React.createElement('a', { key: link.name, href: `#${link.href}`, onClick: (e) => handleNavClick(e, link.href), className: "text-sm tracking-wider uppercase text-stone-600 hover:text-stone-900 transition-colors relative group" }, link.name, React.createElement('span', { className: 'absolute bottom-[-4px] left-0 w-0 h-[1px] bg-[#b8a068] transition-all duration-300 group-hover:w-full' })))),
+                    React.createElement('a', { href: "https://wa.me/5519989669889", target: "_blank", rel: "noopener noreferrer", className: "hidden md:inline-flex items-center gap-2 px-5 py-2.5 bg-stone-900 text-white text-xs tracking-wider uppercase rounded-none hover:bg-stone-800 transition-colors" }, 'Agendar'),
+                    React.createElement('button', { className: "md:hidden p-2 text-stone-700", onClick: () => setIsOpen(!isOpen), 'aria-label': "Toggle Menu" }, isOpen ? React.createElement(X, { className: "w-6 h-6" }) : React.createElement(Menu, { className: "w-6 h-6" }))
                 ),
-                menuOpen && React.createElement('div', { className: 'fixed inset-0 bg-white z-[60] p-12 flex flex-col items-center justify-center gap-8 md:hidden' },
-                    React.createElement('button', { className: 'absolute top-10 right-8', onClick: () => setMenuOpen(false) }, React.createElement(X, {size: 32})),
-                    navItems.map(item => React.createElement('button', { key: item.id, onClick: () => scrollTo(item.id), className: 'text-3xl font-serif-elegant tracking-widest' }, item.name)),
-                    React.createElement('a', { href: `https://wa.me/${CLINIC_INFO.whatsapp}`, className: 'mt-8 px-12 py-5 bg-stone-900 text-white text-sm font-bold uppercase tracking-widest' }, 'Agendar agora')
+                isOpen && React.createElement('div', { className: 'md:hidden bg-white border-t border-stone-100 absolute top-full left-0 right-0 animate-fade-in shadow-xl' }, React.createElement('div', { className: 'px-6 py-6 flex flex-col gap-6' }, navLinks.map(link => React.createElement('a', { key: link.name, href: `#${link.href}`, className: "text-sm tracking-wider uppercase text-stone-600", onClick: (e) => handleNavClick(e, link.href) }, link.name)), React.createElement('a', { href: "https://wa.me/5519989669889", target: "_blank", rel: "noopener noreferrer", className: "inline-block text-center px-5 py-3 bg-stone-900 text-white text-xs tracking-wider uppercase", onClick: () => setIsOpen(false) }, 'Agendar')))
+            );
+        };
+
+        const Hero = () => React.createElement('section', { id: 'hero', className: 'hero-gradient min-h-screen flex items-center pt-20' },
+            React.createElement('div', { className: 'max-w-7xl mx-auto px-6 py-20 w-full' },
+                React.createElement('div', { className: 'grid lg:grid-cols-2 gap-16 items-center' },
+                    React.createElement('div', { className: 'animate-fade-in', style: { animationDelay: '0.1s' } },
+                        React.createElement('p', { className: 'text-xs tracking-[0.3em] uppercase gold-accent mb-6 font-semibold' }, 'Dermatologia Clínica & Estética'),
+                        React.createElement('h1', { className: 'font-serif-elegant text-5xl md:text-6xl lg:text-7xl font-light text-stone-800 leading-tight mb-8' }, React.createElement('span', { className: 'text-[#b8a068]' }, 'BriSkin'), React.createElement('br'), 'Dermatologia'),
+                        React.createElement('p', { className: 'text-lg md:text-xl font-light text-stone-600 leading-relaxed mb-4 max-w-lg' }, 'Excelência e sofisticação no cuidado com a sua pele em Indaiatuba.'),
+                        React.createElement('p', { className: 'text-base text-stone-500 leading-relaxed mb-10 max-w-lg' }, 'A Dra. Daniele e a Dra. Denise convidam você para conhecer um novo conceito em dermatologia personalizada.'),
+                        React.createElement('div', { className: 'flex flex-col sm:flex-row gap-4' },
+                            React.createElement('a', { href: "https://wa.me/5519989669889", target: "_blank", rel: "noopener noreferrer", className: "inline-flex items-center justify-center gap-3 px-8 py-4 bg-stone-900 text-white text-sm tracking-wider uppercase hover:shadow-lg transition-all transform hover:-translate-y-0.5" }, React.createElement(MessageSquare, { className: "w-5 h-5" }), 'Agendar Consulta'),
+                            React.createElement('a', { href: "#contato", className: "inline-flex items-center justify-center gap-2 px-8 py-4 border border-stone-300 text-stone-700 text-sm tracking-wider uppercase hover:border-stone-900 hover:text-stone-900 transition-colors" }, 'Onde Estamos')
+                        )
+                    ),
+                    React.createElement('div', { className: 'relative animate-fade-in', style: { animationDelay: '0.3s' } },
+                        React.createElement('div', { className: 'aspect-[4/5] bg-stone-100 rounded-sm overflow-hidden relative shadow-2xl border border-stone-100' },
+                            React.createElement('img', { src: IMAGES.LOGO_WALL_TEAM, alt: "Dra. Daniele e Dra. Denise - Briskin Dermatologia", className: "w-full h-full object-cover" }),
+                            React.createElement('div', { className: 'absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/60 to-transparent' }, React.createElement('p', { className: 'font-serif-elegant text-white text-xl italic' }, 'Ciência e Beleza em Harmonia'))
+                        ),
+                        React.createElement('div', { className: 'absolute -bottom-6 -left-6 w-32 h-32 border border-stone-200 -z-10' }),
+                        React.createElement('div', { className: 'absolute -top-6 -right-6 w-24 h-24 bg-stone-50 -z-10' })
+                    )
+                )
+            )
+        );
+
+        const About = () => {
+            const features = [
+                { icon: React.createElement(User, { className: "w-6 h-6 gold-accent" }), title: 'Atendimento', desc: 'Personalizado' },
+                { icon: React.createElement(ShieldCheck, { className: "w-6 h-6 gold-accent" }), title: 'Médicas', desc: 'Qualificadas' },
+                { icon: React.createElement(Home, { className: "w-6 h-6 gold-accent" }), title: 'Ambiente', desc: 'Moderno' },
+                { icon: React.createElement(Lightbulb, { className: "w-6 h-6 gold-accent" }), title: 'Protocolos', desc: 'Atualizados' },
+            ];
+            return React.createElement('section', { id: 'sobre', className: 'py-24 md:py-32 bg-[#fdf4f5] overflow-hidden' },
+                React.createElement('div', { className: 'max-w-7xl mx-auto px-6' },
+                    React.createElement('div', { className: 'grid lg:grid-cols-2 gap-16 items-center' },
+                        React.createElement(Reveal, { className: 'order-2 lg:order-1' },
+                            React.createElement('div', { className: 'relative' },
+                                React.createElement('div', { className: 'aspect-[4/3] overflow-hidden rounded-sm shadow-2xl border border-stone-100' }, React.createElement('img', { src: IMAGES.INTERIOR_PINK, alt: "Consultório Briskin Dermatologia", className: "w-full h-full object-cover" })),
+                                React.createElement('div', { className: 'absolute -bottom-10 -right-10 w-48 h-48 bg-stone-50 -z-10 hidden md:block' })
+                            )
+                        ),
+                        React.createElement('div', { className: 'order-1 lg:order-2' },
+                            React.createElement(Reveal, { delay: 200 },
+                                React.createElement('p', { className: 'text-xs tracking-[0.3em] uppercase gold-accent mb-4 font-semibold' }, 'Ambiente exclusivo'),
+                                React.createElement('h2', { className: 'font-serif-elegant text-4xl md:text-5xl font-light text-stone-800 mb-8' }, 'A Clínica'),
+                                React.createElement('div', { className: 'w-16 h-[1px] bg-[#b8a068] mb-8' }),
+                                React.createElement('p', { className: 'text-base text-stone-600 leading-relaxed mb-8' }, 'A BriSkin dermatologia foi projetada para oferecer uma experiência personalizada, onde a tecnologia médica encontra o conforto e a privacidade.')
+                            ),
+                            React.createElement('div', { className: 'grid grid-cols-2 gap-6' }, features.map((f, i) => React.createElement(Reveal, { key: i, delay: 400 + (i * 100) }, React.createElement('div', { className: 'p-6 bg-[#f7e8ea] rounded-sm border border-[#f0dcdf] h-full' }, React.createElement('div', { className: 'w-10 h-10 flex items-center justify-center mb-4' }, f.icon), React.createElement('h4', { className: 'font-medium text-stone-800 text-sm mb-1' }, f.title), React.createElement('p', { className: 'text-xs text-stone-500' }, f.desc)))))
+                        )
+                    )
                 )
             );
         };
 
-        const Hero = () => React.createElement('section', { id: 'hero', className: 'hero-gradient min-h-[90vh] lg:min-h-screen flex items-center pt-24 overflow-hidden' },
-            React.createElement('div', { className: 'max-w-7xl mx-auto px-8 grid lg:grid-cols-2 gap-20 items-center' },
-                React.createElement('div', { className: 'reveal active' },
-                    React.createElement('div', { className: 'inline-block px-4 py-1.5 bg-white shadow-sm border border-stone-100 mb-8' },
-                        React.createElement('p', { className: 'text-[10px] uppercase tracking-[0.4em] gold-accent font-bold' }, 'Ciência • Beleza • Cuidado')
-                    ),
-                    React.createElement('h1', { className: 'font-serif-elegant text-6xl md:text-8xl font-medium text-stone-900 leading-[1.05] mb-8 text-balanced' }, 'Onde a Pele', React.createElement('br'), React.createElement('span', { className: 'italic gold-accent' }, 'se Renova.')),
-                    React.createElement('p', { className: 'text-xl text-stone-600 max-w-lg leading-relaxed mb-12 font-medium' }, 'Um novo conceito em dermatologia personalizada sob o olhar cuidadoso das irmãs Dra. Daniele e Dra. Denise Briski.'),
-                    React.createElement('div', { className: 'flex flex-wrap gap-6' },
-                        React.createElement('a', { href: `https://wa.me/${CLINIC_INFO.whatsapp}`, className: 'px-12 py-6 bg-stone-900 text-white text-[11px] font-bold uppercase tracking-[0.25em] hover:shadow-[0_20px_50px_rgba(0,0,0,0.15)] transition-all transform hover:-translate-y-1' }, 'Agendar Consulta'),
-                        React.createElement('button', { onClick: () => document.getElementById('sobre').scrollIntoView({behavior:'smooth'}), className: 'group flex items-center gap-4 text-[11px] font-bold uppercase tracking-[0.2em] transition-all hover:text-gold' }, 'Conhecer Clínica', React.createElement('div', { className: 'w-10 h-[1px] bg-stone-300 transition-all group-hover:w-16 group-hover:bg-gold' }))
-                    )
+        const Doctors = () => React.createElement('section', { id: 'medicas', className: 'py-24 md:py-32 bg-[#f7e8ea] overflow-hidden' },
+            React.createElement('div', { className: 'max-w-7xl mx-auto px-6' },
+                React.createElement(Reveal, { className: 'text-center mb-16' },
+                    React.createElement('p', { className: 'text-xs tracking-[0.3em] uppercase gold-accent mb-4' }, 'Equipe Médica'),
+                    React.createElement('h2', { className: 'font-serif-elegant text-4xl md:text-5xl font-light text-stone-800 mb-6' }, 'Nossas especialistas'),
+                    React.createElement('div', { className: 'w-16 h-[1px] bg-[#b8a068] mx-auto' })
                 ),
-                React.createElement('div', { className: 'relative reveal active' },
-                    React.createElement('div', { className: 'aspect-[4/5] rounded-[2px] overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.12)] border-[16px] border-white relative z-10' },
-                        React.createElement('img', { src: IMAGES.LOGO_WALL, className: 'w-full h-full object-cover transition-transform duration-[2000ms] ease-out hover:scale-110' })
-                    ),
-                    React.createElement('div', { className: 'absolute -bottom-10 -right-10 bg-white p-10 shadow-2xl hidden md:block z-20 border border-stone-50' },
-                        React.createElement('p', { className: 'font-serif-elegant text-3xl font-medium italic mb-2' }, 'Torre Medical'),
-                        React.createElement('p', { className: 'text-[10px] uppercase tracking-widest font-bold text-stone-400' }, 'Indaiatuba - São Paulo')
-                    )
-                )
+                React.createElement('div', { className: 'grid md:grid-cols-2 gap-12 max-w-4xl mx-auto' }, DOCTORS.map((doctor, index) => React.createElement(Reveal, { key: doctor.id, delay: index * 200 }, React.createElement('div', { className: 'group bg-[#fdf4f5] rounded-sm overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2' }, React.createElement('div', { className: 'aspect-[4/5] relative overflow-hidden' }, React.createElement('img', { src: doctor.image, alt: doctor.name, className: "w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" }), React.createElement('div', { className: 'absolute inset-0 bg-stone-900/10 group-hover:bg-stone-900/0 transition-colors' }), React.createElement('div', { className: 'absolute top-4 right-4 w-12 h-12 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center' }, React.createElement(Heart, { className: "w-6 h-6 gold-accent fill-transparent group-hover:fill-[#b8a068] transition-all" }))), React.createElement('div', { className: 'p-8' }, React.createElement('h3', { className: 'font-serif-elegant text-2xl text-stone-800 mb-2' }, doctor.name), React.createElement('p', { className: 'text-xs tracking-wider uppercase gold-accent mb-4' }, doctor.role), React.createElement('div', { className: 'text-sm text-stone-600 leading-relaxed space-y-1' }, doctor.description.map((line, i) => React.createElement('p', { key: i, className: i === 0 ? "font-semibold text-stone-800 mb-2" : "" }, line))))))))
             )
         );
 
-        const About = () => React.createElement('section', { id: 'sobre', className: 'py-40 bg-white' },
-            React.createElement('div', { className: 'max-w-7xl mx-auto px-8 grid lg:grid-cols-2 gap-32 items-center' },
-                React.createElement(Reveal, { className: 'order-2 lg:order-1 relative' },
-                    React.createElement('div', { className: 'grid grid-cols-2 gap-6' },
-                        React.createElement('div', { className: 'pt-20' }, 
-                            React.createElement('img', { src: IMAGES.INTERIOR, className: 'w-full aspect-[3/4] object-cover rounded shadow-2xl hover-lift' })
-                        ),
-                        React.createElement('div', {}, 
-                            React.createElement('img', { src: IMAGES.RECEPTION, className: 'w-full aspect-[3/4] object-cover rounded shadow-2xl hover-lift' })
-                        )
+        const Services = () => React.createElement('section', { id: 'servicos', className: 'py-24 md:py-32 bg-[#fdf4f5]' },
+            React.createElement('div', { className: 'max-w-7xl mx-auto px-6' },
+                React.createElement(Reveal, { className: 'text-center mb-16' },
+                    React.createElement('p', { className: 'text-xs tracking-[0.3em] uppercase gold-accent mb-4' }, 'Especialidades'),
+                    React.createElement('h2', { className: 'font-serif-elegant text-4xl md:text-5xl font-light text-stone-800 mb-6' }, 'Nossos Tratamentos'),
+                    React.createElement('div', { className: 'w-16 h-[1px] bg-[#b8a068] mx-auto' })
+                ),
+                React.createElement('div', { className: 'grid md:grid-cols-2 lg:grid-cols-4 gap-6' }, SERVICES.map((service, index) => React.createElement(Reveal, { key: service.id, delay: index * 100 }, React.createElement('div', { className: 'p-8 bg-[#f7e8ea] rounded-sm text-center group hover:bg-white hover:shadow-2xl transition-all duration-300 transform h-full' }, React.createElement('div', { className: 'w-14 h-14 mx-auto mb-6 flex items-center justify-center bg-white rounded-full shadow-sm group-hover:bg-[#b8a068] group-hover:text-white transition-colors duration-300' }, React.createElement('span', { className: 'gold-accent group-hover:text-white' }, service.icon)), React.createElement('h3', { className: 'font-serif-elegant text-xl text-stone-800 mb-2' }, service.title), React.createElement('p', { className: 'text-sm text-stone-500' }, service.description)))))
+            )
+        );
+
+        const Gallery = () => {
+            const images = [
+                { url: IMAGES.LOGO_WALL_TEAM, alt: 'Equipe Briskin com Logo' },
+                { url: IMAGES.RECEPTION_TEAM, alt: 'Dra. Daniele e Dra. Denise na Recepção' },
+                { url: IMAGES.BUILDING_FACADE, alt: 'Fachada Torre Medical Indaiatuba' },
+                { url: IMAGES.INTERIOR_PINK, alt: 'Interior da Clínica Consultório' },
+                { url: IMAGES.LOGO_CLOSEUP, alt: 'Logotipo Briskin Dermatologia' },
+                { url: IMAGES.HALLWAY_TEAM, alt: 'Médicas no Corredor da Clínica' },
+            ];
+            return React.createElement('section', { id: 'espaco', className: 'py-24 md:py-32 bg-[#f7e8ea]' },
+                React.createElement('div', { className: 'max-w-7xl mx-auto px-6' },
+                    React.createElement('div', { className: 'text-center mb-16' },
+                        React.createElement('p', { className: 'text-xs tracking-[0.3em] uppercase gold-accent mb-4 font-semibold' }, 'Galeria'),
+                        React.createElement('h2', { className: 'font-serif-elegant text-4xl md:text-5xl font-light text-stone-800 mb-6' }, 'Nosso Espaço'),
+                        React.createElement('div', { className: 'w-16 h-[1px] bg-[#b8a068] mx-auto' })
                     ),
-                    React.createElement('div', { className: 'absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-stone-50 -z-10 rounded-full blur-3xl opacity-50' })
-                ),
-                React.createElement('div', { className: 'order-1 lg:order-2' },
-                    React.createElement(Reveal, { delay: 200 },
-                        React.createElement('p', { className: 'text-[11px] uppercase tracking-[0.4em] gold-accent font-bold mb-6' }, 'Ambiente Exclusivo'),
-                        React.createElement('h2', { className: 'font-serif-elegant text-5xl md:text-6xl font-medium mb-10 leading-tight' }, 'Sua pele merece o melhor acolhimento.'),
-                        React.createElement('p', { className: 'text-xl text-stone-500 leading-relaxed mb-12 font-medium' }, 'A Briskin Dermatologia foi projetada para oferecer uma experiência de luxo e bem-estar, onde a tecnologia médica encontra o conforto e a privacidade.'),
-                        React.createElement('div', { className: 'grid grid-cols-1 sm:grid-cols-2 gap-10' },
-                            [
-                                {icon: ShieldCheck, t: 'Dra. Daniele Briski', s: 'CRM 157.062 | RQE 72.880'}, 
-                                {icon: ShieldCheck, t: 'Dra. Denise Briski', s: 'CRM 146.992 | RQE 82.385'},
-                                {icon: Home, t: 'Espaço Moderno', s: 'No coração de Indaiatuba'}, 
-                                {icon: Lightbulb, t: 'Protocolos VIP', s: 'Personalizados para você'}
-                            ].map((item, i) => React.createElement('div', { key: i, className: 'flex flex-col gap-3 group' },
-                                React.createElement(item.icon, { className: 'gold-accent transition-transform group-hover:scale-110', size: 28 }),
-                                React.createElement('div', {}, 
-                                    React.createElement('p', { className: 'text-sm font-bold tracking-wide uppercase mb-1' }, item.t),
-                                    React.createElement('p', { className: 'text-[11px] font-bold text-stone-400 tracking-wider' }, item.s)
-                                )
-                            ))
-                        )
-                    )
+                    React.createElement('div', { className: 'grid grid-cols-2 md:grid-cols-3 gap-6' }, images.map((img, index) => React.createElement('div', { key: index, className: `bg-white rounded-sm overflow-hidden shadow-md group relative ${index === 0 || index === 3 ? 'md:col-span-1 md:row-span-1' : ''}` }, React.createElement('img', { src: img.url, className: "w-full h-full object-cover aspect-square transition-transform duration-700 group-hover:scale-110", alt: img.alt }), React.createElement('div', { className: 'absolute inset-0 bg-stone-900/10 group-hover:bg-transparent transition-colors' }), React.createElement('div', { className: 'absolute inset-0 border-[10px] border-white/0 group-hover:border-white/20 transition-all duration-500 pointer-events-none' }))))
                 )
+            );
+        };
+
+        const Testimonials = () => React.createElement('section', { className: 'py-24 md:py-32 bg-[#fdf4f5]' },
+            React.createElement('div', { className: 'max-w-7xl mx-auto px-6' },
+                React.createElement('div', { className: 'text-center mb-16' },
+                    React.createElement('p', { className: 'text-xs tracking-[0.3em] uppercase gold-accent mb-4' }, 'Depoimentos'),
+                    React.createElement('h2', { className: 'font-serif-elegant text-4xl md:text-5xl font-light text-stone-800 mb-6' }, 'Experiência dos Pacientes'),
+                    React.createElement('div', { className: 'w-16 h-[1px] bg-[#b8a068] mx-auto' })
+                ),
+                React.createElement('div', { className: 'grid md:grid-cols-3 gap-8' }, TESTIMONIALS.map(t => React.createElement('div', { key: t.id, className: 'p-8 bg-[#f7e8ea] rounded-sm hover:shadow-xl transition-all duration-300' }, React.createElement('div', { className: 'flex gap-1 mb-4' }, [...Array(t.rating)].map((_, i) => React.createElement(Star, { key: i, className: "w-4 h-4 fill-[#b8a068] text-[#b8a068]" }))), React.createElement('p', { className: 'font-serif-elegant text-lg text-stone-700 italic mb-6' }, `"${t.text}"`), React.createElement('p', { className: 'text-sm text-stone-500' }, `— ${t.name}`))))
             )
         );
 
-        const Doctors = () => React.createElement('section', { id: 'medicas', className: 'py-40 bg-stone-50' },
-            React.createElement('div', { className: 'max-w-7xl mx-auto px-8' },
-                React.createElement(Reveal, { className: 'text-center mb-24' },
-                    React.createElement('p', { className: 'text-[11px] uppercase tracking-[0.4em] gold-accent font-bold mb-6' }, 'Equipe Médica'),
-                    React.createElement('h2', { className: 'font-serif-elegant text-5xl md:text-6xl font-medium mb-8' }, 'Nossas Especialistas'),
-                    React.createElement('div', { className: 'w-24 h-[1px] bg-gold mx-auto' })
-                ),
-                React.createElement('div', { className: 'grid md:grid-cols-2 gap-16 max-w-5xl mx-auto' },
-                    [
-                        { name: 'Dra. Daniele Briski', role: 'Dermatologista Clínica & Estética', img: IMAGES.HALLWAY },
-                        { name: 'Dra. Denise Briski', role: 'Dermatologista Clínica & Estética', img: IMAGES.RECEPTION }
-                    ].map((d, i) => React.createElement(Reveal, { key: i, delay: i*300, className: 'group' },
-                        React.createElement('div', { className: 'bg-white p-5 shadow-2xl transition-all duration-700 hover:shadow-gold/10' },
-                            React.createElement('div', { className: 'aspect-[3/4] overflow-hidden mb-8 relative' },
-                                React.createElement('img', { src: d.img, className: 'w-full h-full object-cover grayscale transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-105' }),
-                                React.createElement('div', { className: 'absolute inset-0 bg-stone-900/10 group-hover:bg-transparent transition-all' })
-                            ),
-                            React.createElement('div', { className: 'text-center' },
-                                React.createElement('h3', { className: 'font-serif-elegant text-3xl font-medium mb-2' }, d.name),
-                                React.createElement('p', { className: 'text-[10px] uppercase font-bold tracking-[0.3em] gold-accent' }, d.role)
-                            )
-                        )
-                    ))
-                )
-            )
-        );
-
-        const Services = () => React.createElement('section', { id: 'servicos', className: 'py-40 bg-white' },
-            React.createElement('div', { className: 'max-w-7xl mx-auto px-8' },
-                React.createElement(Reveal, { className: 'mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8' },
+        const Contact = () => React.createElement('section', { id: 'contato', className: 'py-24 md:py-32 bg-[#f7e8ea]' },
+            React.createElement('div', { className: 'max-w-7xl mx-auto px-6' },
+                React.createElement('div', { className: 'grid lg:grid-cols-2 gap-16' },
                     React.createElement('div', {},
-                        React.createElement('p', { className: 'text-[11px] uppercase tracking-[0.4em] gold-accent font-bold mb-6' }, 'Especialidades'),
-                        React.createElement('h2', { className: 'font-serif-elegant text-6xl font-medium' }, 'Nossos Tratamentos')
-                    ),
-                    React.createElement('p', { className: 'text-stone-500 max-w-sm font-medium' }, 'Soluções médicas avançadas para todos os tipos de necessidades dermatológicas.')
-                ),
-                React.createElement('div', { className: 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12' },
-                    SERVICES.map((s, i) => React.createElement(Reveal, { key: s.id, delay: i*100 },
-                        React.createElement('div', { className: 'group p-10 bg-stone-50 border border-stone-100 rounded-sm hover:bg-white hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 h-full' },
-                            React.createElement('div', { className: 'mb-8 gold-accent transition-transform group-hover:scale-110' }, React.createElement(s.icon, { size: 40, strokeWidth: 1.5 })),
-                            React.createElement('h3', { className: 'font-serif-elegant text-2xl font-medium mb-4 group-hover:gold-accent transition-colors' }, s.title),
-                            React.createElement('p', { className: 'text-[12px] text-stone-500 uppercase tracking-widest font-bold leading-relaxed' }, s.desc)
+                        React.createElement('p', { className: 'text-xs tracking-[0.3em] uppercase gold-accent mb-4' }, 'Contato'),
+                        React.createElement('h2', { className: 'font-serif-elegant text-4xl md:text-5xl font-light text-stone-800 mb-8' }, 'Fale Conosco'),
+                        React.createElement('div', { className: 'w-16 h-[1px] bg-[#b8a068] mb-8' }),
+                        React.createElement('p', { className: 'text-stone-600 mb-10' }, 'Entre em contato pelo WhatsApp ou Instagram para agendar sua consulta de forma prática e segura.'),
+                        React.createElement('div', { className: 'space-y-6' },
+                            React.createElement('a', { href: "https://wa.me/5519989669889", target: "_blank", rel: "noopener noreferrer", className: "flex items-center gap-4 p-5 bg-white rounded-sm shadow-sm hover:shadow-md transition-shadow group" }, React.createElement('div', { className: 'w-12 h-12 bg-green-500 rounded-full flex items-center justify-center transition-transform group-hover:scale-110' }, React.createElement(MessageCircle, { className: "w-6 h-6 text-white" })), React.createElement('div', {}, React.createElement('p', { className: 'text-sm text-stone-500' }, 'WhatsApp'), React.createElement('p', { className: 'font-medium text-stone-800' }, '(19) 98966-9889'))),
+                            React.createElement('a', { href: "https://www.instagram.com/briskin.dermatologia", target: "_blank", rel: "noopener noreferrer", className: "flex items-center gap-4 p-5 bg-white rounded-sm shadow-sm hover:shadow-md transition-shadow group" }, React.createElement('div', { className: 'w-12 h-12 bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400 rounded-full flex items-center justify-center transition-transform group-hover:scale-110' }, React.createElement(Instagram, { className: "w-6 h-6 text-white" })), React.createElement('div', {}, React.createElement('p', { className: 'text-sm text-stone-500' }, 'Instagram'), React.createElement('p', { className: 'font-medium text-stone-800' }, '@briskin.dermatologia'))),
+                            React.createElement('div', { className: 'flex items-start gap-4 p-5 bg-white rounded-sm shadow-sm' }, React.createElement('div', { className: 'w-12 h-12 bg-stone-800 rounded-full flex items-center justify-center flex-shrink-0' }, React.createElement(MapPin, { className: "w-6 h-6 text-white" })), React.createElement('div', {}, React.createElement('p', { className: 'text-sm text-stone-500' }, 'Endereço'), React.createElement('p', { className: 'font-medium text-stone-800' }, 'Rua das Orquídeas, 667 – Sala 808'), React.createElement('p', { className: 'text-stone-600' }, 'Jardim Pau Preto, Indaiatuba - SP')))
                         )
-                    ))
+                    ),
+                    React.createElement('div', { className: 'bg-stone-200 rounded-sm overflow-hidden min-h-[400px] relative shadow-inner' }, React.createElement('iframe', { src: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.123!2d-47.22!3d-23.08!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDA0JzQ4LjAiUyA0N8KwMTMnMTIuMCJX!5e0!3m2!1spt-BR!2sbr!4v1600000000000!5m2!1spt-BR!2sbr", className: "absolute inset-0 w-full h-full border-0 grayscale opacity-80", loading: "lazy" }))
                 )
             )
         );
 
-        const Contact = () => React.createElement('section', { id: 'contato', className: 'py-40 bg-stone-900 text-white relative overflow-hidden' },
-            React.createElement('div', { className: 'max-w-7xl mx-auto px-8 grid lg:grid-cols-2 gap-24 relative z-10' },
-                React.createElement('div', {},
-                    React.createElement('p', { className: 'text-[11px] uppercase tracking-[0.4em] gold-accent font-bold mb-6' }, 'Localização'),
-                    React.createElement('h2', { className: 'font-serif-elegant text-6xl font-medium mb-16' }, 'Onde Estamos'),
-                    React.createElement('div', { className: 'space-y-10' },
-                        React.createElement('div', { className: 'flex items-start gap-8' },
-                            React.createElement('div', { className: 'w-14 h-14 rounded-full border border-white/20 flex items-center justify-center flex-shrink-0' }, React.createElement(MapPin, { className: 'gold-accent', size: 24 })),
-                            React.createElement('div', {}, 
-                                React.createElement('p', { className: 'text-stone-400 text-xs uppercase tracking-widest font-bold mb-2' }, 'Endereço'),
-                                React.createElement('p', { className: 'text-xl font-medium leading-relaxed' }, CLINIC_INFO.address)
-                            )
-                        ),
-                        React.createElement('div', { className: 'flex items-start gap-8' },
-                            React.createElement('div', { className: 'w-14 h-14 rounded-full border border-white/20 flex items-center justify-center flex-shrink-0' }, React.createElement(Phone, { className: 'gold-accent', size: 24 })),
-                            React.createElement('div', {}, 
-                                React.createElement('p', { className: 'text-stone-400 text-xs uppercase tracking-widest font-bold mb-2' }, 'Contato'),
-                                React.createElement('p', { className: 'text-xl font-medium' }, CLINIC_INFO.whatsapp_formatted)
-                            )
-                        )
+        const Footer = () => React.createElement('footer', { className: 'py-12 bg-stone-900 text-white' },
+            React.createElement('div', { className: 'max-w-7xl mx-auto px-6' },
+                React.createElement('div', { className: 'flex flex-col md:flex-row items-center justify-between gap-8' },
+                    React.createElement('div', { className: 'text-center md:text-left' },
+                        React.createElement('p', { className: 'font-serif-elegant text-2xl mb-2' }, React.createElement('span', { className: 'text-[#b8a068]' }, 'BriSkin'), ' Dermatologia'),
+                        React.createElement('p', { className: 'text-sm text-stone-400' }, 'Cuidado dermatológico personalizado')
                     ),
-                    React.createElement('div', { className: 'mt-16 flex gap-6' },
-                        React.createElement('a', { 
-                            href: CLINIC_INFO.instagram_url, 
-                            target: "_blank",
-                            className: 'px-8 py-4 border border-white/10 flex items-center gap-3 text-[11px] font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all transform hover:-translate-y-1'
-                        }, React.createElement(Instagram, {size: 18}), 'Instagram'),
-                        React.createElement('a', { 
-                            href: `https://wa.me/${CLINIC_INFO.whatsapp}`,
-                            target: "_blank",
-                            className: 'px-8 py-4 bg-gold text-white flex items-center gap-3 text-[11px] font-bold uppercase tracking-widest hover:shadow-[0_20px_40px_rgba(184,160,104,0.3)] transition-all transform hover:-translate-y-1'
-                        }, React.createElement(MessageCircle, {size: 18}), 'WhatsApp')
+                    React.createElement('div', { className: 'flex items-center gap-6' },
+                        React.createElement('a', { href: "https://wa.me/5519989669889", target: "_blank", rel: "noopener noreferrer", className: "w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#b8a068] transition-colors" }, React.createElement(MessageCircle, { className: "w-5 h-5" })),
+                        React.createElement('a', { href: "https://www.instagram.com/briskin.dermatologia", target: "_blank", rel: "noopener noreferrer", className: "w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#b8a068] transition-colors" }, React.createElement(Instagram, { className: "w-5 h-5" }))
                     )
                 ),
-                React.createElement('div', { className: 'h-[500px] lg:h-auto min-h-[400px] bg-stone-800 rounded-sm overflow-hidden grayscale contrast-125 border border-white/5 shadow-2xl' },
-                    React.createElement('iframe', { src: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.123!2d-47.22!3d-23.08!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDA0JzQ4LjAiUyA0N8KwMTMnMTIuMCJX!5e0!3m2!1spt-BR!2sbr!4v1600000000000", className: 'w-full h-full border-0 opacity-40' })
-                )
-            ),
-            React.createElement('div', { className: 'absolute -top-40 -left-40 w-96 h-96 bg-gold/10 rounded-full blur-[120px]' })
+                React.createElement('div', { className: 'mt-10 pt-8 border-t border-white/10 text-center' }, React.createElement('p', { className: 'text-sm text-stone-500' }, '© 2024 Briskin Dermatologia. Todos os direitos reservados.'))
+            )
         );
 
-        const FloatingActionCenter = () => {
-            const [scrolled, setScrolled] = useState(false);
-            useEffect(() => {
-                const h = () => setScrolled(window.scrollY > 300);
-                window.addEventListener('scroll', h);
-                return () => window.removeEventListener('scroll', h);
-            }, []);
+        const getGeminiResponse = async (prompt) => {
+            // This is a mock response for demonstration on GitHub Pages.
+            // Replace with your actual Gemini API call if you have a backend proxy.
+            await new Promise(res => setTimeout(res, 1500));
+            const lowerCasePrompt = prompt.toLowerCase();
+            if (lowerCasePrompt.includes('horário') || lowerCasePrompt.includes('atendimento')) {
+                return 'Nosso horário de atendimento é de Segunda a Sexta, das 9h às 18h. Para agendar, por favor, entre em contato pelo WhatsApp.';
+            }
+            if (lowerCasePrompt.includes('endereço') || lowerCasePrompt.includes('localização')) {
+                return 'Estamos localizados na Rua das Orquídeas, 667 – Sala 808, Jardim Pau Preto, Indaiatuba - SP.';
+            }
+            if (lowerCasePrompt.includes('agendar') || lowerCasePrompt.includes('consulta')) {
+                return 'Você pode agendar sua consulta diretamente pelo nosso WhatsApp: (19) 98966-9889. Será um prazer atender você!';
+            }
+            return 'Obrigada pelo seu contato! Para informações sobre tratamentos, agendamentos ou outras dúvidas, por favor, nos chame no WhatsApp.';
+        };
 
-            return React.createElement('div', { 
-                className: `fixed bottom-10 right-8 z-[100] flex flex-col gap-4 transition-all duration-700 ${scrolled ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'}` 
-            },
-                React.createElement('a', { 
-                    href: CLINIC_INFO.instagram_url, 
-                    target: "_blank",
-                    className: 'w-14 h-14 bg-white text-stone-900 rounded-full flex items-center justify-center shadow-2xl border border-stone-100 transition-all hover:scale-110 active:scale-95 group' 
-                }, React.createElement(Instagram, { size: 22, className: 'group-hover:text-pink-600 transition-colors' })),
-                React.createElement('a', { 
-                    href: `https://wa.me/${CLINIC_INFO.whatsapp}`,
-                    target: "_blank",
-                    className: 'w-16 h-16 bg-stone-900 text-white rounded-full flex items-center justify-center shadow-2xl transition-all hover:scale-110 active:scale-95 animate-float group relative' 
-                }, 
-                    React.createElement(MessageCircle, { size: 28, className: 'group-hover:text-green-400 transition-colors' }),
-                    React.createElement('span', { className: 'absolute -top-2 -right-2 w-5 h-5 bg-gold rounded-full border-2 border-white' })
+        const ChatAssistant = () => {
+            const [isOpen, setIsOpen] = useState(false);
+            const [messages, setMessages] = useState([{ role: 'bot', text: 'Olá! Sou a assistente virtual da Briskin Dermatologia. Como posso ajudar você hoje?' }]);
+            const [input, setInput] = useState('');
+            const [isLoading, setIsLoading] = useState(false);
+            const scrollRef = useRef(null);
+
+            useEffect(() => {
+                if (scrollRef.current) {
+                    scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+                }
+            }, [messages]);
+
+            const handleSend = async () => {
+                if (!input.trim() || isLoading) return;
+                const userMsg = input.trim();
+                setInput('');
+                setMessages(prev => [...prev, { role: 'user', text: userMsg }]);
+                setIsLoading(true);
+                const botResponse = await getGeminiResponse(userMsg);
+                setMessages(prev => [...prev, { role: 'bot', text: botResponse }]);
+                setIsLoading(false);
+            };
+
+            return React.createElement('div', { className: 'fixed bottom-6 right-6 z-[100] font-sans-modern' },
+                React.createElement('button', { onClick: () => setIsOpen(!isOpen), className: 'w-14 h-14 bg-stone-900 text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform duration-300' }, isOpen ? React.createElement(X, { className: "w-6 h-6" }) : React.createElement(MessageSquare, { className: "w-6 h-6" })),
+                isOpen && React.createElement('div', { className: 'absolute bottom-20 right-0 w-[350px] max-w-[90vw] bg-white rounded-2xl shadow-2xl flex flex-col overflow-hidden animate-fade-in border border-stone-100' },
+                    React.createElement('div', { className: 'bg-stone-900 p-4 text-white' }, React.createElement('h3', { className: 'font-serif-elegant text-lg tracking-wide' }, 'Assistente Briskin'), React.createElement('p', { className: 'text-[10px] text-stone-400 uppercase tracking-widest' }, 'IA Inteligente')),
+                    React.createElement('div', { ref: scrollRef, className: 'flex-1 p-4 h-[350px] overflow-y-auto space-y-4 bg-stone-50' }, messages.map((m, i) => React.createElement('div', { key: i, className: `flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}` }, React.createElement('div', { className: `max-w-[85%] p-3 rounded-2xl text-sm leading-relaxed ${m.role === 'user' ? 'bg-stone-800 text-white rounded-tr-none' : 'bg-white text-stone-700 shadow-sm rounded-tl-none border border-stone-100'}` }, m.text))), isLoading && React.createElement('div', { className: 'flex justify-start' }, React.createElement('div', { className: 'bg-white p-3 rounded-2xl shadow-sm border border-stone-100' }, React.createElement(Loader2, { className: "w-4 h-4 animate-spin text-stone-400" })))),
+                    React.createElement('div', { className: 'p-3 bg-white border-t border-stone-100 flex gap-2' }, React.createElement('input', { type: "text", value: input, onChange: (e) => setInput(e.target.value), onKeyPress: (e) => e.key === 'Enter' && handleSend(), placeholder: "Digite sua dúvida...", className: "flex-1 bg-stone-50 rounded-full px-4 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-stone-200" }), React.createElement('button', { onClick: handleSend, disabled: isLoading, className: "w-10 h-10 bg-stone-900 text-white rounded-full flex items-center justify-center hover:bg-stone-800 transition-colors disabled:opacity-50" }, React.createElement(Send, { className: "w-4 h-4" })))
                 )
             );
         };
 
         const App = () => {
-            return React.createElement('div', { className: 'min-h-screen' },
-                React.createElement(Navbar),
+            const [isScrolled, setIsScrolled] = useState(false);
+            useEffect(() => {
+                const handleScroll = () => setIsScrolled(window.scrollY > 20);
+                window.addEventListener('scroll', handleScroll);
+                return () => window.removeEventListener('scroll', handleScroll);
+            }, []);
+
+            return React.createElement('div', { className: 'min-h-screen flex flex-col selection:bg-stone-200 selection:text-stone-900' },
+                React.createElement(Navbar, { isScrolled }),
                 React.createElement('main', {},
                     React.createElement(Hero),
                     React.createElement(About),
                     React.createElement(Doctors),
                     React.createElement(Services),
+                    React.createElement('section', { className: 'py-20 bg-stone-900 text-white' },
+                        React.createElement('div', { className: 'max-w-4xl mx-auto px-6 text-center' },
+                            React.createElement('h2', { className: 'font-serif-elegant text-3xl md:text-4xl font-light mb-6' }, 'Agende sua Consulta'),
+                            React.createElement('p', { className: 'text-stone-400 mb-8 max-w-xl mx-auto' }, 'Escolha a melhor forma de agendar seu atendimento de maneira prática e segura.'),
+                            React.createElement('div', { className: 'flex flex-col sm:flex-row gap-4 justify-center' },
+                                React.createElement('a', { href: "https://wa.me/5519989669889", target: "_blank", rel: "noopener noreferrer", className: "inline-flex items-center justify-center gap-3 px-8 py-4 bg-white text-stone-900 text-sm tracking-wider uppercase hover:bg-stone-100 transition-colors" }, 'Agendar pelo WhatsApp'),
+                                React.createElement('a', { href: "https://www.instagram.com/briskin.dermatologia", target: "_blank", rel: "noopener noreferrer", className: "inline-flex items-center justify-center gap-3 px-8 py-4 border border-white/30 text-white text-sm tracking-wider uppercase hover:bg-white/10 transition-colors" }, 'Seguir no Instagram')
+                            )
+                        )
+                    ),
+                    React.createElement(Gallery),
+                    React.createElement(Testimonials),
                     React.createElement(Contact)
                 ),
-                React.createElement('footer', { className: 'py-20 bg-black text-center' },
-                    React.createElement('div', { className: 'max-w-7xl mx-auto px-8' },
-                        React.createElement('p', { className: 'font-serif-elegant text-3xl font-medium text-white mb-6' }, 'Briskin Dermatologia'),
-                        React.createElement('div', { className: 'flex justify-center gap-8 mb-10' },
-                             ['Início', 'Sobre', 'Serviços', 'Contato'].map(item => React.createElement('button', { key: item, className: 'text-[10px] uppercase tracking-[0.3em] text-stone-600 hover:text-white transition-colors' }, item))
-                        ),
-                        React.createElement('p', { className: 'text-[10px] uppercase tracking-[0.5em] text-stone-700 border-t border-white/5 pt-10' }, '© 2024 Briskin. Excelência Dermatológica.')
-                    )
-                ),
-                React.createElement(FloatingActionCenter)
+                React.createElement(Footer),
+                React.createElement(ChatAssistant)
             );
         };
 
         const root = createRoot(document.getElementById('root'));
-        root.render(React.createElement(App));
+        root.render(React.createElement(React.StrictMode, null, React.createElement(App)));
     </script>
-<script type="module" src="/index.tsx"></script>
 </body>
 </html>
